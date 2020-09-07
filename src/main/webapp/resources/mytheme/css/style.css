@@ -1,0 +1,433 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #e5e5e5;
+}
+
+.loginForm {
+	margin: 0;
+	padding: 0;
+	background: url(/BM_SpringMVC/resources/image/bg.jpg);
+	background-repeat: round;
+	background-size: cover;
+	background-position: center;
+	font-family: sans-serif;
+}
+
+.loginbox {
+	width: 320px;
+	height: 420px;
+	background: #000;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+
+.avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px);
+}
+
+h1 {
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 22px;	
+}
+
+.loginbox p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+}
+
+.loginbox input {
+	width: 100%;
+	margin-bottom: 40px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.loginbox button {
+	width: 100%;
+	margin-top: 20px;
+	border: none;
+	outline: none;
+	height: 40px;
+	background: #fb2525;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 20px;
+}
+
+.loginbox button:hover {
+	cursor: pointer;
+	background: #ffc107;
+	color: #000;
+}
+
+.tbProduct {
+	padding-top: 120px;
+	padding-left: 300px;
+	width: 80%;
+	height: 80%;
+	font-size: 18px;
+}
+
+.tbProduct table{
+	margin-top: 30px;
+	width: 97%;
+}
+
+.right_btn{
+	display: block;
+    float: right;
+    margin-right: 39px;
+}
+
+.btnAddProduct{
+	width: 89px;
+	padding: 9px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #28a745;
+    background-color: #fff;
+    border: 1px solid #28a745;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.btnAddProduct:hover{
+	background-color: #28a745;
+	color: #fff;
+}
+
+.btnUpdateProduct{
+	width: 89px;
+	padding: 9px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.btnUpdateProduct:hover{
+	background-color: #007bff;
+	color: #fff;
+}
+
+.btnDeleteProduct{
+	width: 89px;
+	padding: 9px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #dc3545;
+    background-color: #fff;
+    border: 1px solid #dc3545;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.btnDeleteProduct:hover{
+	background-color: #dc3545;
+	color: #fff;
+}
+
+.btnDetailProduct{
+	width: 89px;
+	padding: 9px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffc107;
+    background-color: #fff;
+    border: 1px solid #ffc107;
+    border-radius: 3px;
+    font-family: inherit;
+}
+
+.btnDetailProduct:hover{
+	background-color: #ffc107;
+	color: #fff;
+}
+
+.tbProduct th, td{
+	padding: 10px 45px 10px 45px;
+}
+
+.titleProduct {
+	background-color: #2f323a;
+	color: #fff;
+	height: 50px;
+}
+
+.eachProduct {
+	height: 30px;
+}
+
+.eachProduct:nth-child(odd){
+    background-color: #ccc;
+}
+.eachProduct:nth-child(even){
+    background-color:white;
+}
+
+header{
+	position: fixed;
+	background: #2f323a;
+	padding: 20px;
+	width: 100%;
+	height: 60px;
+}
+
+.left_area h3{
+	color: #fff;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: 900;
+	padding-top: 15px;
+	margin-left: 100px;
+}
+
+.logo_image{
+	width: 60px;
+	height: 60px;
+	border-radius: 60px;
+	margin-bottom: 10px;
+	position: absolute;
+}
+
+.left_area span{
+	color: #1DC4E7;
+}
+
+.right_area{
+	float: right;
+	color: #fff;
+	margin-top: -30px;
+}
+
+.logout_btn{
+	padding: 5px;
+	background: #19B3D3;
+	color: #fff;
+	text-decoration: none;
+	float: right;
+	margin-top: -5px;
+	margin-right: 40px;
+	margin-left: 15px;
+	border-radius: 2px;
+	font-size: 15px;
+	font-weight: 600;
+	transition: 0.5s;
+	transition-property: background;
+}
+
+.logout_btn:hover{
+	background: #fff;
+	color: #19B3D3;
+}
+
+.sidebar{
+	background: #2F323A;
+	margin-top: 38px;
+	padding-top: 30px;
+	position: fixed;
+	left: 0;
+	width: 250px;
+	height: 100%;
+}
+
+.sidebar h4{
+	color: #ccc;
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+.sidebar a{
+	color: #fff;
+	display: block;
+	width: 100%;
+	line-height: 60px;
+	text-decoration: none;
+	padding-left: 40px;
+	box-sizing: border-box;
+	transition: 0.5s;
+	transition-property: background;
+}
+
+.sidebar a:hover{
+	background: #19B3D3;
+}
+
+.sidebar i{
+	padding-right: 10px;
+}
+
+.numOfPages{
+	text-align: center;
+    font-size: 30px;
+    color: #5c116f;
+    margin-top: 30px;
+}
+
+.numOfPages a{
+	text-decoration: none;
+	color: #5c116f;
+}
+
+.numOfPages a:hover{
+	color: #ffff00;
+}
+
+.fullAddDialog {
+	display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);;
+}
+
+.addDialog{
+	width: 450px;
+    height: 700px;
+	background: #fff;
+	color: #000;
+	top: 50%;
+	left: 50%;
+	position: fixed;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 35px 30px;
+	border-radius: 10px;
+}
+
+.addDialog h3{
+	text-align: center;
+    padding-bottom: 20px;
+    color: #19b3d3;
+    font-size: 25px;
+}
+
+.group_Add{
+	padding-left: 40px;
+	padding-right: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.group_Add input{
+	width: 100%;
+    height: 35px;
+    border-color: green;
+    background: #d8f5d8;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.addDialog button{
+	background: #fff;
+    color: #008000;
+    padding: 12px;
+    border: 3px solid green;
+    width: 100px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button.btnAdd {
+    margin-top: 30px;
+    margin-left: 92px;
+}
+
+.addDialog button:hover{
+	color: white;
+	background: green;
+}
+
+.updateProduct {
+	display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);;
+}
+
+.updateProductDialog{
+	width: 450px;
+    height: 700px;
+	background: #fff;
+	color: #000;
+	top: 50%;
+	left: 50%;
+	position: fixed;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 35px 30px;
+	border-radius: 10px;
+}
+
+.updateProductDialog h3{
+	text-align: center;
+    padding-bottom: 20px;
+    color: #19b3d3;
+    font-size: 25px;
+}
+
+.group_Update_Pr{
+	padding-left: 40px;
+	padding-right: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.updateProductDialog input{
+	width: 100%;
+    height: 35px;
+    border-color: green;
+    background: #d8f5d8;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.updateProductDialog button{
+	background: #fff;
+    color: #008000;
+    padding: 12px;
+    border: 3px solid green;
+    width: 108px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button.btnUpdatePr {
+    margin-top: 30px;
+    margin-left: 92px;
+}
+
+.updateProductDialog button:hover{
+	color: white;
+	background: green;
+}
