@@ -66,12 +66,58 @@
 		addDialog.style.display = "block";
 	}
 	
+	function getCategory(){
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/BM_SpringMVC/category/getInfo",
+			data : {
+			},
+			dataType : 'json',
+			timeout: 100000,
+			success : function(data) {
+				if(data != null) {
+					for (key in data) {
+						if (typeof (data[key] == 'string'))
+							$('#categoryPrUpdate').append('<option value="' + key + '">' + data[key].ca_Name + '</option>');
+					}
+				}
+			}
+		});
+	}
+	
+	function getSupplier(){
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			url : "/BM_SpringMVC/supplier/getInfo",
+			data : {},
+			dataType : 'json',
+			timeout: 100000,
+			success : function(data) {
+				if(data != null){
+					for(key in data){
+						if(typeof (data[key] == 'string'))
+							$('#supplierPrUpdate').append('<option value="' + key + '">' + data[key].su_Name + '</option>');
+					}
+				}
+			}
+		});
+	}
+	
 	function btnUpdatePr(){
 		if(funcCheck() >= 0){
 			var updateProduct = document.getElementById('updateProduct');
 			updateProduct.style.display = "block";
 			var idPr = funcCheck();
-
+			
+			// Get categories
+			getCategory();
+			
+			// Get supplier
+			getSupplier();
+			
+			// Get info product update
 			$.ajax({
 				type : "GET",
 				contentType : "application/json",
@@ -86,6 +132,8 @@
 					if (data != null) {
 						$('#namePrUpdate').val(data[0].pr_Name);
 						//document.getElementById('namePrUpdate').value = data[0].pr_Name;
+						$('#pricePrUpdate').val(data[0].pr_Price);
+						$('#quantifyPrUpdate').val(data[0].pr_Quantify);
 					}
 				},
 				error : function(e) {
@@ -93,6 +141,31 @@
 				}
 			});
 		}
+	}
+	
+	function updateProduct(){
+		var idPr = funcCheck();
+		$.ajax({
+			type : "PUT",
+			contentType : "text",
+			url : "/BM_SpringMVC/updateProduct",
+			data : {
+				idPr : idPr,
+				supplierPr : supplierPr,
+				namePr : namePr,
+				pricePr : pricePr,
+				quantifyPr : quantifyPr,
+				supplierPr : supplierPr
+			},
+			dataType : 'text',
+			timeout : 100000,
+			success : function(data){
+				if(data == "success")
+					$('#notificationUpdate').val("Cập nhật thành công!");
+				else
+					$('#notificationUpdate').val("Cập nhật thất bại!");
+			}
+		});
 	}
 	
 	function funcCheck() {

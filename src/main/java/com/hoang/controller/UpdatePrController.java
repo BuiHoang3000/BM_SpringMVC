@@ -1,5 +1,6 @@
 package com.hoang.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hoang.model.Category;
 import com.hoang.model.Product;
+import com.hoang.model.Supplier;
 
 @Controller
 public class UpdatePrController {
@@ -28,8 +31,33 @@ public class UpdatePrController {
 	@RequestMapping(value = "/product/getInfo", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<Product> getInfo(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String idPr = request.getParameter("idPr");
 		List<Product> pr = prJDBC.getProductUpdate(idPr);
 		return pr;
+	}
+	
+	@RequestMapping(value = "/category/getInfo", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Category> getInfoCategory() {
+		List<Category> ca = prJDBC.getCategories();
+		return ca;
+	}
+	
+	@RequestMapping(value = "/supplier/getInfo", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Supplier> getInfoSupplier() {
+		List<Supplier> su = prJDBC.getSupplier();
+		return su;
+	}
+	
+	@RequestMapping(value = "/updateProduct", method = RequestMethod.PUT)
+	@ResponseBody
+	public void UpdateProduct() {
+		
 	}
 }

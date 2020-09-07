@@ -33,6 +33,7 @@ public class ProductAPI {
 	
 	@PostMapping(value = "/apiPr")
 	public Product createProduct(@RequestBody Product pr) {
+		
 		return pr;
 	}
 	

@@ -1,5 +1,6 @@
 package com.hoang.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -29,6 +30,11 @@ public class ProductController {
 	
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(@ModelAttribute("loginForm") Employees em, HttpServletRequest request, HttpSession session, ModelMap model) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		if(session.getAttribute("accType") == "Boss" || session.getAttribute("accType") == "Employee") {
 			
 			// Trang hiện tại

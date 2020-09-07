@@ -7,10 +7,14 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCountCallbackHandler;
 
+import com.hoang.mapper.CategoryMapper;
 import com.hoang.mapper.EmployeeMapper;
 import com.hoang.mapper.ProductMapper;
+import com.hoang.mapper.SupplierMapper;
+import com.hoang.model.Category;
 import com.hoang.model.Employees;
 import com.hoang.model.Product;
+import com.hoang.model.Supplier;
 
 public class ConJDBC {
 	private DataSource dataSource;
@@ -73,5 +77,27 @@ public class ConJDBC {
 		String sql = "EXEC FIND_PRODUCT_ALL_BY_ID @IntFind = ?";
 		List<Product> pr =  jdbcTemplateObject.query(sql, new Object[] {id}, new ProductMapper());
 		return pr;
+	}
+
+	public void addProduct(Product pr){
+		
+	}
+	
+	
+	// CATEGORY
+	
+	public List<Category> getCategories(){
+		String sql = "EXEC SHOW_CATEGORIES";
+		List<Category> ca = jdbcTemplateObject.query(sql, new Object[] {}, new CategoryMapper());
+		return ca;
+	}
+	
+	
+	// SUPPLIER
+	
+	public List<Supplier> getSupplier(){
+		String sql = "EXEC SHOW_SUPPLIERS";
+		List<Supplier> su = jdbcTemplateObject.query(sql, new Object[] {}, new SupplierMapper());
+		return su;
 	}
 }

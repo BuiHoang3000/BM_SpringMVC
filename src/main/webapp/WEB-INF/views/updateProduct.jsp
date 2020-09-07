@@ -4,22 +4,25 @@
 <html>
 	<div id="updateProduct" class="updateProduct">
 		<div class="updateProductDialog">
-			<form action="">
+			<form>
 				<h3>CẬP NHẬT SẢN PHẨM</h3>
 				<div class="group_Update_Pr">
 					<p>Danh mục</p>
-					<select></select>
+					<select id="categoryPrUpdate"></select>
 					<p>Tên sản phẩm</p>
 					<input type="text"  id="namePrUpdate">
 					<p>Giá</p>
-					<input type="number">
+					<input type="number" min="0" id="pricePrUpdate">
 					<p>Số lượng</p>
-					<input type="number" min="1">
+					<input type="number" min="1" id="quantifyPrUpdate">
 					<p>Nhà cung cấp</p>
-					<input type="text">
+					<select id="supplierPrUpdate"></select>
+				</div>
+				<div>
+					<label id="notificationUpdate"></label>
 				</div>
 			</form>
-			<button class="btnUpdatePr">Cập nhật</button>
+			<button onclick="updateProduct()" class="btnUpdatePr">Cập nhật</button>
 			<button onclick="funcBack()" class="btnBack">Quay lại</button>
 		</div>
 	</div>
