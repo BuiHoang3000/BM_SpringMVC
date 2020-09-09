@@ -4,21 +4,22 @@
 <!DOCTYPE html>
 <html>
 <div id="fullAddDialog" class="fullAddDialog">
-	<div class="addDialog">
+	<div class="addProductDialog">
 		<form>
 			<h3>THÊM SẢN PHẨM</h3>
 			<div class="group_Add">
 				<p>Danh mục</p>
-				<select></select>
+				<select id="categoryPrAdd"></select>
 				<p>Tên sản phẩm</p>
-				<input type="text">
+				<input type="text" id="namePrAdd">
 				<p>Giá</p>
-				<input type="number">
+				<input type="number" id="pricePrAdd">
 				<p>Số lượng</p>
-				<input type="number" min="1">
+				<input type="number" min="1" id="quantifyPrAdd">
 				<p>Nhà cung cấp</p>
-				<input type="text">
+				<select id="supplierPrAdd"></select>
 			</div>
+			<div id="notificationAdd" class="notificationAdd"></div>
 		</form>
 		<button class="btnAdd">Thêm</button>
 		<button onclick="funcBack()" class="btnBack">Quay lại</button>

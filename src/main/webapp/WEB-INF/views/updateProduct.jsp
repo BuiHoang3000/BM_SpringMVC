@@ -18,9 +18,7 @@
 					<p>Nhà cung cấp</p>
 					<select id="supplierPrUpdate"></select>
 				</div>
-				<div>
-					<label id="notificationUpdate"></label>
-				</div>
+				<div id="notificationUpdate" class="notificationUpdate"></div>
 			</form>
 			<button onclick="updateProduct()" class="btnUpdatePr">Cập nhật</button>
 			<button onclick="funcBack()" class="btnBack">Quay lại</button>

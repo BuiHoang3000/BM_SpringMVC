@@ -79,8 +79,9 @@ public class ConJDBC {
 		return pr;
 	}
 
-	public void addProduct(Product pr){
-		
+	public void updateProduct(Product pr){
+		String sql = "{CALL UPDATE_PRODUCT(?,?,?,?,?,?,?)}";
+		jdbcTemplateObject.update(sql,pr.getPr_ID(), pr.getPr_CA(),pr.getPr_Name(),pr.getPr_Price(),pr.getPr_Quantify(),pr.getPr_SU(),pr.getPr_Status());
 	}
 	
 	

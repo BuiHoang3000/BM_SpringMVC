@@ -55,9 +55,23 @@ public class UpdatePrController {
 		return su;
 	}
 	
-	@RequestMapping(value = "/updateProduct", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateProduct", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public void UpdateProduct() {
+	public void UpdateProduct(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String idPr = request.getParameter("idPr");
+		String categoryPr = request.getParameter("categoryPr");
+		String namePr = request.getParameter("namePr");
+		float pricePr = Float.parseFloat(request.getParameter("pricePr"));
+		int quantifyPr = Integer.parseInt(request.getParameter("quantifyPr"));
+		String supplierPr = request.getParameter("supplierPr");
 		
+		Product prUpdate = new Product(idPr,categoryPr,namePr,pricePr,quantifyPr,supplierPr,"1");
+		prJDBC.updateProduct(prUpdate);
+		return;
 	}
 }

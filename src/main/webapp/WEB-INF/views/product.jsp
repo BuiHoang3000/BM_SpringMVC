@@ -61,12 +61,9 @@
 <jsp:include page="updateProduct.jsp"></jsp:include>
 
 <script type="text/javascript">
-	function btnAddPr(){
-		var addDialog = document.getElementById('fullAddDialog');
-		addDialog.style.display = "block";
-	}
 	
-	function getCategory(){
+	function getCategory(category, idCategory){
+		$(idCategory).empty();
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
@@ -77,16 +74,23 @@
 			timeout: 100000,
 			success : function(data) {
 				if(data != null) {
+					var ca_ID = 1;
 					for (key in data) {
-						if (typeof (data[key] == 'string'))
-							$('#categoryPrUpdate').append('<option value="' + key + '">' + data[key].ca_Name + '</option>');
+						if (typeof (data[key] == 'string')){
+							if(data[key].ca_Name == category)
+								$(idCategory).append('<option selected="selected" value="' + ca_ID + '">' + data[key].ca_Name + '</option>');
+							else
+								$(idCategory).append('<option value="' + ca_ID + '">' + data[key].ca_Name + '</option>');
+						}
+						ca_ID++;
 					}
 				}
 			}
 		});
 	}
 	
-	function getSupplier(){
+	function getSupplier(supplier, idSupplier){
+		$(idSupplier).empty();
 		$.ajax({
 			type : "GET",
 			contentType : "application/json",
@@ -96,13 +100,26 @@
 			timeout: 100000,
 			success : function(data) {
 				if(data != null){
+					var su_ID = 1;
 					for(key in data){
-						if(typeof (data[key] == 'string'))
-							$('#supplierPrUpdate').append('<option value="' + key + '">' + data[key].su_Name + '</option>');
+						if(typeof (data[key] == 'string')){
+							if(data[key].su_Name == supplier)
+								$(idSupplier).append('<option selected="selected" value="' + su_ID + '">' + data[key].su_Name + '</option>');
+							else
+								$(idSupplier).append('<option value="' + su_ID + '">' + data[key].su_Name + '</option>');
+						}
+						su_ID++;
 					}
 				}
 			}
 		});
+	}
+	
+	function btnAddPr(){
+		var addDialog = document.getElementById('fullAddDialog');
+		addDialog.style.display = "block";
+		getCategory('','#categoryPrAdd');
+		getSupplier('','#supplierPrAdd');
 	}
 	
 	function btnUpdatePr(){
@@ -110,12 +127,8 @@
 			var updateProduct = document.getElementById('updateProduct');
 			updateProduct.style.display = "block";
 			var idPr = funcCheck();
-			
-			// Get categories
-			getCategory();
-			
-			// Get supplier
-			getSupplier();
+			var categoryPr = "";
+			var supplierPr = "";
 			
 			// Get info product update
 			$.ajax({
@@ -130,10 +143,19 @@
 				success : function(data) {
 					console.log("SUCCESS: ", data);
 					if (data != null) {
+						categoryPr = data[0].pr_CA;
+						$('#categoryPrUpdate')
 						$('#namePrUpdate').val(data[0].pr_Name);
 						//document.getElementById('namePrUpdate').value = data[0].pr_Name;
 						$('#pricePrUpdate').val(data[0].pr_Price);
 						$('#quantifyPrUpdate').val(data[0].pr_Quantify);
+						supplierPr = data[0].pr_SU;
+						
+						// Get categories
+						getCategory(categoryPr, '#categoryPrUpdate');
+						
+						// Get supplier
+						getSupplier(supplierPr, '#supplierPrUpdate');
 					}
 				},
 				error : function(e) {
@@ -145,25 +167,29 @@
 	
 	function updateProduct(){
 		var idPr = funcCheck();
+		var categoryPr = document.getElementById('categoryPrUpdate').value;
+		var namePr = document.getElementById('namePrUpdate').value;
+		var pricePr = document.getElementById('pricePrUpdate').value;
+		var quantifyPr = document.getElementById('quantifyPrUpdate').value;
+		var supplierPr = document.getElementById('supplierPrUpdate').value;
 		$.ajax({
-			type : "PUT",
-			contentType : "text",
+			type : "GET",
+			contentType : "JSON.stringify(data)",
 			url : "/BM_SpringMVC/updateProduct",
 			data : {
 				idPr : idPr,
-				supplierPr : supplierPr,
+				categoryPr : categoryPr,
 				namePr : namePr,
 				pricePr : pricePr,
 				quantifyPr : quantifyPr,
 				supplierPr : supplierPr
 			},
-			dataType : 'text',
-			timeout : 100000,
 			success : function(data){
-				if(data == "success")
-					$('#notificationUpdate').val("Cập nhật thành công!");
-				else
-					$('#notificationUpdate').val("Cập nhật thất bại!");
+				document.getElementById('notificationUpdate').innerHTML = 'Cập nhật thành công!';
+			},
+			error : function(e){
+				document.getElementById('notificationUpdate').innerHTML = 'Cập nhật thất bại!';
+				console.log("ERROR: ", e);
 			}
 		});
 	}
@@ -192,6 +218,7 @@
 	function funcBack(){
 		document.getElementById('fullAddDialog').style.display = "none";
 		document.getElementById('updateProduct').style.display = "none";
+		document.getElementById('notificationUpdate').innerHTML = '';
 	}
 </script>
 </body>
